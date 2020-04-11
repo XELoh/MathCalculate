@@ -13,16 +13,12 @@
 
 - (void)add:(CDVInvokedUrlCommand*)command
 {
-   CDVPluginResult* pluginResult = nil;
-   NsNumber *param1 = [[command.arguments objectAtIndex: 0] valueForKey:@"param1"];
-   NsNumber *param2 = [[command.arguments objectAtIndex: 0] valueForKey:@"param2"];
-
-   if(param1 >=0 && param2 >= 0){
-       NSString* total = @(param1 + param2);
-       pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:total];
-   }else {
-       pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-   }
+    CDVPluginResult* pluginResult = nil;
+    
+    CGRect frame = CGRectMake(0,0,100,100);
+    UITextField *textField = [[UITextField alloc] initWithFrame:frame];
+    
+  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 
    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
